@@ -79,6 +79,7 @@ const updateInfo = async (req, res, next) => {
     deliveryDate,
     recieverName,
     recieverNumber,
+    recieverEmail,
   } = req.body;
 
   try {
@@ -96,6 +97,7 @@ const updateInfo = async (req, res, next) => {
       deliveryDate,
       recieverName,
       recieverNumber,
+      recieverEmail,
     });
     await transporter.sendMail({
       from: "inuenike@gmail.com", // sender address
@@ -108,7 +110,7 @@ const updateInfo = async (req, res, next) => {
               `, // html body
     });
 
-    console.log("Message sent: %s", info.messageId);
+    console.log("Message sent: %s");
     res.json({ info });
   } catch (error) {
     next(error);
